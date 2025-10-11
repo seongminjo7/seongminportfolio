@@ -3,6 +3,7 @@ import GlobalStyle from './styles/GlobalStyle';  // GlobalStyle import
 import styled from 'styled-components';
 import ToggleBtn from './components/ToggleBtn';
 import Intro from './components/Intro';
+import AboutMe from './components/AboutMe';
 
 function App() {
 
@@ -10,9 +11,10 @@ function App() {
     <>
       <GlobalStyle />
       <AllWrapper>
-        <ToggleBtn></ToggleBtn>
+        <ToggleBtn />
 
         <Intro />
+        <AboutMe />
       </AllWrapper>
     </>
   );
@@ -20,7 +22,7 @@ function App() {
 
 const AllWrapper = styled.div`
   background: var(--main-color);
-  padding: 40px;
+  padding: 40px 40px 0 40px;
   min-height: 100vh;
 `;
 
