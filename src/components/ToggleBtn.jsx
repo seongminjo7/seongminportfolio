@@ -4,34 +4,34 @@ import { FaArrowUp } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 
 export default function ToggleBtn() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-    useEffect(() => {
-        if (isDarkMode) {
-            document.documentElement.style.setProperty('--background-color', '#292929');
-            document.documentElement.style.setProperty('--text-color', '#FAF6E8');
-        } else {
-            document.documentElement.style.setProperty('--background-color', '#FAF6E8');
-            document.documentElement.style.setProperty('--text-color', '#292929');
-        }
-    }, [isDarkMode]);
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.style.setProperty('--background-color', '#292929');
+      document.documentElement.style.setProperty('--text-color', '#FAF6E8');
+    } else {
+      document.documentElement.style.setProperty('--background-color', '#FAF6E8');
+      document.documentElement.style.setProperty('--text-color', '#292929');
+    }
+  }, [isDarkMode]);
 
-    // 스크롤 최상단으로 이동하는 함수
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+  // 스크롤 최상단으로 이동하는 함수
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    return (
-        <Buttons>
-            <ToggleButton onClick={() => setIsDarkMode(prev => !prev)} aria-label="Toggle dark mode">
-                {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </ToggleButton>
+  return (
+    <Buttons>
+      <ToggleButton onClick={() => setIsDarkMode(prev => !prev)} aria-label="Toggle dark mode">
+        {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+      </ToggleButton>
 
-            <TopButton onClick={scrollToTop} aria-label="Scroll to top">
-                <FaArrowUp size={16} />
-            </TopButton>
-        </Buttons>
-    );
+      <TopButton onClick={scrollToTop} aria-label="Scroll to top">
+        <FaArrowUp size={16} />
+      </TopButton>
+    </Buttons>
+  );
 }
 
 const Buttons = styled.div`
@@ -55,11 +55,13 @@ const ToggleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-color);
+  color: var(--main-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background: var(--main-color);
-    color: var(--background-color);
+    color: var(--text-color);
     transition: 0.3s;
   }
 `;
@@ -69,12 +71,13 @@ const TopButton = styled.button`
   height: 38px;
   border-radius: 999px;
   border: solid 3px var(--main-color);
-  background: transparent;
+  background: var(--background-color);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-color);
+  color: var(--main-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background: var(--main-color);

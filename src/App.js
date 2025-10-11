@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GlobalStyle from './styles/GlobalStyle';  // GlobalStyle import
 import styled from 'styled-components';
 import ToggleBtn from './components/ToggleBtn';
+import Intro from './components/Intro';
 
 function App() {
 
@@ -10,6 +11,8 @@ function App() {
       <GlobalStyle />
       <AllWrapper>
         <ToggleBtn></ToggleBtn>
+
+        <Intro />
       </AllWrapper>
     </>
   );
