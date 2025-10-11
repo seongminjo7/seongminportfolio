@@ -5,19 +5,6 @@ import ToggleBtn from './components/ToggleBtn';
 
 function App() {
 
-  const [isDarkMode, setIsDarkMode] = useState(false); // 기본은 라이트 모드
-
-  // 다크 모드 상태에 따라 CSS 변수 업데이트
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.style.setProperty('--background-color', '#292929');
-      document.documentElement.style.setProperty('--text-color', '#FAF6E8');
-    } else {
-      document.documentElement.style.setProperty('--background-color', '#FAF6E8');
-      document.documentElement.style.setProperty('--text-color', '#292929');
-    }
-  }, [isDarkMode]);
-
   return (
     <>
       <GlobalStyle />
