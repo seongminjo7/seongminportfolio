@@ -3,10 +3,11 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { portfolioSections } from "../data/portfolioSections";
-import { section } from "framer-motion/client";
+import { projectSections } from "../data/projectSections";
+import { section, tr } from "framer-motion/client";
 import kakaoIcon from "../img/header/kakao.svg";
 import emailIcon from "../img/header/mail.svg";
+import { Link } from "react-scroll";
 
 export default function Header() {
 
@@ -44,7 +45,11 @@ export default function Header() {
     return (
         <HeaderWrapper className={active ? "active" : ""} scrolled={scrolled}>
             <HeaderTop>
-                <Logo>Seongmin Jo</Logo>
+                <LogoWrapper>
+                    <Link to="intro" smooth={true} duration={500}>
+                        <Logo>Seongmin Jo</Logo>
+                    </Link>
+                </LogoWrapper>
                 <Btns onClick={toggleMenu}>
                     <AnimatePresence mode="wait" initial={false}>
                         {menuOpen ? (
@@ -84,20 +89,24 @@ export default function Header() {
                         aria-hidden={!menuOpen}
                         style={{ overflow: 'hidden' }}
                     >
-                        <li className="about"><h2>About Me</h2></li>
-                        <li className="project">
-                            <h2>Project</h2>
-                            <ProjectListWrapper>
-                                {portfolioSections.map((section) => (
-                                    <ProjectLists key={section.id}>
-                                        <div className="textBox">
-                                            <h3>{section.navTitle}</h3>
-                                            <span>{section.subTitle}</span>
-                                        </div>
-                                    </ProjectLists>
-                                ))}
-                            </ProjectListWrapper>
-                        </li>
+                        <Link to="about" smooth={true} duration={500}>
+                            <li className="about"><h2>About Me</h2></li>
+                        </Link>
+                        <Link to="project" smooth={true} duration={500}>
+                            <li className="project">
+                                <h2>Project</h2>
+                                <ProjectListWrapper>
+                                    {projectSections.map((section) => (
+                                        <ProjectLists key={section.id}>
+                                            <div className="textBox">
+                                                <h3>{section.navTitle}</h3>
+                                                <span>{section.subTitle}</span>
+                                            </div>
+                                        </ProjectLists>
+                                    ))}
+                                </ProjectListWrapper>
+                            </li>
+                        </Link>
                         <li className="design"><h2>Design</h2></li>
                         <SnsLink>
                             <Sns><img src={kakaoIcon} alt="카카오톡 아이콘" /></Sns>
@@ -111,7 +120,7 @@ export default function Header() {
                 <li className="project">
                     <h2>Project</h2>
                     <ProjectListWrapper>
-                        {portfolioSections.map((section) => (
+                        {projectSections.map((section) => (
                             <ProjectLists key={section.id}>
                                 <div className="textBox">
                                     <h3>{section.navTitle}</h3><span>{section.subTitle}</span>
@@ -160,6 +169,9 @@ const HeaderTop = styled.div`
     ${HeaderWrapper}.active &{
         justify-content: space-between;
     }
+`
+const LogoWrapper = styled.div`
+    cursor: pointer;
 `
 
 const Logo = styled.h1`

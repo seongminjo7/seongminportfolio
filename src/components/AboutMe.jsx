@@ -1,10 +1,13 @@
 import styled from "styled-components"
+import { Element } from "react-scroll"
 
 export default function AboutMe() {
     return (
-        <AboutWrapper>
+        <Element name="about" className="element">
+            <AboutWrapper>
 
-        </AboutWrapper>
+            </AboutWrapper>
+        </Element>
     )
 }
 

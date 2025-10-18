@@ -1,27 +1,30 @@
 import styled from "styled-components"
+import { Element } from "react-scroll"
 
 export default function Intro() {
     return (
-        <IntroWrapper>
-            <div className="TitleWrapper">
-                <div className="hello"><p>Hello, I'm</p><p className="secondary">SeongMinJo</p></div>
-                <div className="wellcome"><p>Wellcome to my</p><p className="italic">Portfolio</p></div>
-            </div>
+        <Element name="intro" className="element">
+            <IntroWrapper>
+                <div className="TitleWrapper">
+                    <div className="hello"><p>Hello, I'm</p><p className="secondary">SeongMinJo</p></div>
+                    <div className="wellcome"><p>Wellcome to my</p><p className="italic">Portfolio</p></div>
+                </div>
 
-            <SubtitleWrapper>
-                <p>I'm</p>
-                <SubRotate>
-                    <ul>
-                        <li>Innovative</li>
-                        <li>Passionate</li>
-                        <li>Versatile</li>
-                        <li>Adaptive</li>
-                        <li>Creative</li>
-                    </ul>
-                </SubRotate>
-                <p>Developer</p>
-            </SubtitleWrapper>
-        </IntroWrapper>
+                <SubtitleWrapper>
+                    <p>I'm</p>
+                    <SubRotate>
+                        <ul>
+                            <li>Innovative</li>
+                            <li>Passionate</li>
+                            <li>Versatile</li>
+                            <li>Adaptive</li>
+                            <li>Creative</li>
+                        </ul>
+                    </SubRotate>
+                    <p>Developer</p>
+                </SubtitleWrapper>
+            </IntroWrapper>
+        </Element>
     )
 }
 

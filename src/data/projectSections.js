@@ -1,5 +1,5 @@
 // 배열 타입도 추론되게 export
-export const portfolioSections = [
+export const projectSections = [
     {
         id: "Guess",
         title: "GUESS",
@@ -9,7 +9,7 @@ export const portfolioSections = [
         contribution: "Contribution : 100%",
         stack: ["React", "Styled-Components", "Firebase"],
         moreDescription: "실제 Guess 사이트를 클론하며 반응형 웹 구조 설계, 상품 리스트 필터 기능 등을 직접 구현했습니다.",
-        siteUrl: "https://zara-clone.vercel.app",
+        siteUrl: "https://guesskorea.com/?srsltid=AfmBOorThMxZCRn_cyCVI2rnZTenA-kWEqMj7ToYJLJ0X-0ZSLaeH33m",
         navTitle:"Guess",
     },
     {
@@ -21,7 +21,7 @@ export const portfolioSections = [
         contribution: "Contribution : 100%",
         stack: ["React", "Styled-Components", "Firebase"],
         moreDescription: "실제 Zara 사이트를 클론하며 반응형 웹 구조 설계, 상품 리스트 필터 기능 등을 직접 구현했습니다.",
-        siteUrl: "https://zara-clone.vercel.app",
+        siteUrl: "https://www.ferrari.com/en-EN/formula1",
         navTitle:"Scuderia Ferrari",
     },
     {

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ToggleBtn from './components/ToggleBtn';
 import Intro from './components/Intro';
 import AboutMe from './components/AboutMe';
-import Portfolio from './components/Portfolio';
+import Project from './components/Project';
 import Design from './components/Design';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -17,8 +17,9 @@ function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.8,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.1, // 부드러운 스크롤의 속도 조절
+      smoothWheel: true, // 휠로 스크롤할 때 부드럽게
+      smoothTouch: true
     });
 
     // 애니메이션 프레임을 업데이트하여 부드러운 스크롤을 지속시킵니다.
@@ -40,7 +41,7 @@ function App() {
 
         <Intro />
         <AboutMe />
-        <Portfolio />
+        <Project />
         <Design />
         <Footer />
       </AllWrapper>
