@@ -26,7 +26,10 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
   }
+  
  p {
   margin: 0 !important;
 }
@@ -37,6 +40,10 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  ul{
+    list-style: none;
   }
 `;
 

@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import ToggleBtn from './components/ToggleBtn';
 import Intro from './components/Intro';
 import AboutMe from './components/AboutMe';
+import Portfolio from './components/Portfolio';
+import Design from './components/Design';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 function App() {
 
@@ -11,10 +15,14 @@ function App() {
     <>
       <GlobalStyle />
       <AllWrapper>
+        <Header />
         <ToggleBtn />
 
         <Intro />
         <AboutMe />
+        <Portfolio />
+        <Design />
+        <Footer />
       </AllWrapper>
     </>
   );
@@ -24,21 +32,7 @@ const AllWrapper = styled.div`
   background: var(--main-color);
   padding: 40px 40px 0 40px;
   min-height: 100vh;
-`;
-
-const Button = styled.button`
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #4A90E2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  margin-top: 20px;
-
-  &:hover {
-    background-color: #357ABD;
-  }
+  position: relative;
 `;
 
 export default App;
