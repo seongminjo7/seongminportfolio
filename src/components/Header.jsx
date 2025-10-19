@@ -41,13 +41,15 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     return (
         <HeaderWrapper className={active ? "active" : ""} scrolled={scrolled}>
             <HeaderTop>
                 <LogoWrapper>
-                    <Link to="intro" smooth={true} duration={500}>
-                        <Logo>Seongmin Jo</Logo>
-                    </Link>
+                    <Logo onClick={scrollToTop}>Seongmin Jo</Logo>
                 </LogoWrapper>
                 <Btns onClick={toggleMenu}>
                     <AnimatePresence mode="wait" initial={false}>
@@ -88,25 +90,29 @@ export default function Header() {
                         aria-hidden={!menuOpen}
                         style={{ overflow: 'hidden' }}
                     >
-                        <Link to="about" smooth={true} duration={500}>
+                        <Link to="about" smooth={true} duration={800} onClick={() => setMenuOpen(false)}>
                             <li className="about"><h2>About Me</h2></li>
                         </Link>
                         <li className="project">
-                            <Link to="project" smooth={true} duration={500}>
+                            <Link to="project" smooth={true} duration={800} onClick={() => setMenuOpen(false)}>
                                 <h2>Project</h2>
                             </Link>
                             <ProjectListWrapper>
                                 {projectSections.map((section) => (
-                                    <ProjectLists key={section.id}>
-                                        <div className="textBox">
-                                            <h3>{section.navTitle}</h3>
-                                            <span>{section.subTitle}</span>
-                                        </div>
-                                    </ProjectLists>
+                                    <Link to={section.id} smooth={true} duration={800} /* onClick={() => setMenuOpen(false)} */>
+                                        <ProjectLists key={section.id}>
+                                            <div className="textBox">
+                                                <h3>{section.navTitle}</h3>
+                                                <span>{section.subTitle}</span>
+                                            </div>
+                                        </ProjectLists>
+                                    </Link>
                                 ))}
                             </ProjectListWrapper>
                         </li>
-                        <li className="design"><h2>Design</h2></li>
+                        <Link to="design" smooth={true} duration={800} onClick={() => setMenuOpen(false)}>
+                            <li className="design"><h2>Design</h2></li>
+                        </Link>
                         <SnsLink>
                             <Sns><img src={kakaoIcon} alt="카카오톡 아이콘" /></Sns>
                             <Sns><img src={emailIcon} alt="이메일 아이콘" /></Sns>
@@ -114,26 +120,6 @@ export default function Header() {
                     </Nav>
                 )}
             </AnimatePresence>
-            {/* <Nav>
-                <li className="about"><h2>About Me</h2></li>
-                <li className="project">
-                    <h2>Project</h2>
-                    <ProjectListWrapper>
-                        {projectSections.map((section) => (
-                            <ProjectLists key={section.id}>
-                                <div className="textBox">
-                                    <h3>{section.navTitle}</h3><span>{section.subTitle}</span>
-                                </div>
-                            </ProjectLists>
-                        ))}
-                    </ProjectListWrapper>
-                </li>
-                <li className="design"><h2>Design</h2></li>
-                <SnsLink>
-                    <Sns><img src={kakaoIcon} alt="카카오톡 아이콘" /></Sns>
-                    <Sns><img src={emailIcon} alt="이메일 아이콘" /></Sns>
-                </SnsLink>
-            </Nav> */}
         </HeaderWrapper>
     )
 }
@@ -155,7 +141,6 @@ const HeaderWrapper = styled.div`
   &.active {
     flex-direction: column;
     border-radius: 40px;
-    /* padding: 20px 25px 25px 30px; // 세로 레이아웃에서 밀림 완화 */
   }
 `;
 
@@ -194,38 +179,6 @@ const Btns = styled.button`
       display: block;
     }
 `
-/* const Nav = styled.ul`
-
-    display: none;
-    width: 500px;
-    font-family: var(--font-secondary);
-
-    li{
-        width: fit-content;
-
-        h2{
-            font-weight: normal;
-            font-size: 56px;
-            color: var(--main-color);
-            transition: 500ms;
-        }
-
-        &:hover h2{
-            font-weight: bold;
-            cursor: pointer;
-        }
-    }
-
-    .project{
-        display: flex;
-    }
-
-    ${HeaderWrapper}.active & {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-` */
-
 
 const Nav = styled.ul`
   width: 500px;
@@ -285,7 +238,7 @@ const ProjectLists = styled.li`
         font-weight: normal;
     }
 
-    .textBox::after{
+/*     .textBox::after{
         content: "";
         display: block;
         width: 0;
@@ -301,7 +254,7 @@ const ProjectLists = styled.li`
     .textBox:hover::after{
         width: 100%;
         opacity: 1;
-    }
+    } */
 
     span{
         color: var(--main-color);

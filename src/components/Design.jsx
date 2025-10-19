@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { designSections } from "../data/designSections"
 import { useState } from 'react';
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { Element } from "react-scroll";
 
 export default function Design() {
 
@@ -18,48 +19,50 @@ export default function Design() {
     }
 
     return (
-        <DesignWrapper>
-            <h2>DESIGN</h2>
-            <DesignList>
-                {designSections.map((section, index) => (
-                    <Lists
-                        key={section.id}
-                        className={`designs ${section.id} ${activeId === section.id ? 'active' : ''}`}
-                        onClick={() => handleClick(section.id)}
-                    >
-                        <h3>{index + 1}</h3>
-                        <div className="designInfo">
-                            <p className="title">{section.title}</p>
-                            <p className="description">{section.description}</p>
-                        </div>{/* designInfo */}
-
-                        <div className="designInfoActive">
-                            <div className="textbox">
+        <Element name="design">
+            <DesignWrapper>
+                <h2>DESIGN</h2>
+                <DesignList>
+                    {designSections.map((section, index) => (
+                        <Lists
+                            key={section.id}
+                            className={`designs ${section.id} ${activeId === section.id ? 'active' : ''}`}
+                            onClick={() => handleClick(section.id)}
+                        >
+                            <h3>{index + 1}</h3>
+                            <div className="designInfo">
                                 <p className="title">{section.title}</p>
-                                <p className="description">{section.moreDescription}</p>
-                            </div>{/* textbox */}
+                                <p className="description">{section.description}</p>
+                            </div>{/* designInfo */}
 
-                            <div className="designMore">
-                                <div className="imgbox">
+                            <div className="designInfoActive">
+                                <div className="textbox">
+                                    <p className="title">{section.title}</p>
+                                    <p className="description">{section.moreDescription}</p>
+                                </div>{/* textbox */}
 
-                                </div>
-                            </div>{/* designMore */}
-                            <IoMdArrowRoundBack
-                                size={30}
-                                style={{
-                                    cursor: 'pointer',
-                                    position: 'absolute',
-                                    bottom: '30px',
-                                    right: '30px',
-                                }}
-                                onClick={handleBackClick}
-                            />
-                        </div>{/* designInfoActive */}
+                                <div className="designMore">
+                                    <div className="imgbox">
 
-                    </Lists>
-                ))}
-            </DesignList>
-        </DesignWrapper>
+                                    </div>
+                                </div>{/* designMore */}
+                                <IoMdArrowRoundBack
+                                    size={30}
+                                    style={{
+                                        cursor: 'pointer',
+                                        position: 'absolute',
+                                        bottom: '30px',
+                                        right: '30px',
+                                    }}
+                                    onClick={handleBackClick}
+                                />
+                            </div>{/* designInfoActive */}
+
+                        </Lists>
+                    ))}
+                </DesignList>
+            </DesignWrapper>
+        </Element>
     )
 }
 

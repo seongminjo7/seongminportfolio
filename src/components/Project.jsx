@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { projectSections } from "../data/projectSections";
 import { GoArrowUpRight } from "react-icons/go";
-import { Element } from "react-scroll"
+import { Element } from "react-scroll";
 
 
 export default function Portfolio() {
@@ -12,55 +12,59 @@ export default function Portfolio() {
 
   return (
 
-    <Element name="project" className="element">
-      <ProjectWrapper>
+    <Element name="project" className="test" style={{position:'sticky', top:0}}>
+      <ProjectWrapper >
         {projectSections.map((section, index) => (
-          <PortfolioSection key={section.id} className={`portfolio ${section.id}`}>
-            <Top>
-              <h2>{`#${String(index + 1).padStart(2, "0")}`}</h2>
-            </Top>
+          <Element key={section.id} name={section.id}>
+            <StyledElement >
+              <PortfolioSection key={section.id} className={`portfolio ${section.id} ${index % 2 === 0 ? 'even' : 'odd'}`}>
+                <Top>
+                  <h2>{`#${String(index + 1).padStart(2, "0")}`}</h2>
+                </Top>
 
-            <Bottom>
-              <Left>
-                <img src={section.image} alt={section.title} />
-              </Left>
+                <Bottom>
+                  <Left>
+                    <img src={section.image} alt={section.title} />
+                  </Left>
 
-              <Right>
-                <ProjectInfo>
-                  <InfoTop>
-                    <InfoSub>
-                      <InfoTitle>
-                        <h3>{section.title}</h3>
-                        <span>{section.subTitle}</span>
-                      </InfoTitle>
-                      <InfoP>
-                        <p className="responsive">
-                          {section.responsive ? "Responsive Web" : "Static Web"}
-                        </p>
-                        <span>/</span>
-                        <p>{section.contribution}</p>
-                      </InfoP>
-                    </InfoSub>
-                    <StackList>
-                      <p>{section.stack}</p>
-                    </StackList>
-                    <p>{section.description}</p>
-                  </InfoTop>
-                  <InfoBottom>
-                    <InfoBtns key={index}>
-                      <button>view more <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
-                    </InfoBtns>
-                    <InfoBtns key={index}>
-                      <button onClick={() => handleClick(section.siteUrl)}>go site <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
-                    </InfoBtns>
-                  </InfoBottom>
-                </ProjectInfo>
-              </Right>
-            </Bottom>
-          </PortfolioSection>
+                  <Right>
+                    <ProjectInfo>
+                      <InfoTop>
+                        <InfoSub>
+                          <InfoTitle>
+                            <h3>{section.title}</h3>
+                            <span>{section.subTitle}</span>
+                          </InfoTitle>
+                          <InfoP>
+                            <p className="responsive">
+                              {section.responsive ? "Responsive Web" : "Static Web"}
+                            </p>
+                            <span>/</span>
+                            <p>{section.contribution}</p>
+                          </InfoP>
+                        </InfoSub>
+                        <StackList>
+                          <p>{section.stack}</p>
+                        </StackList>
+                        <p>{section.description}</p>
+                      </InfoTop>
+                      <InfoBottom>
+                        <InfoBtns key={index}>
+                          <button>view more <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
+                        </InfoBtns>
+                        <InfoBtns key={index}>
+                          <button onClick={() => handleClick(section.siteUrl)}>go site <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
+                        </InfoBtns>
+                      </InfoBottom>
+                    </ProjectInfo>
+                  </Right>
+                </Bottom>
+              </PortfolioSection>
+            </StyledElement>
+          </Element>
         ))}
       </ProjectWrapper>
-    </Element>
+    </Element >
   )
 }
 
@@ -70,7 +74,8 @@ const ProjectWrapper = styled.div`
   width: 100%;
   position: relative;
   background-color: var(--background-color);
-  transition: 0.3s ease;
+  transition: 0.3s ease;     
+  top: 0;
 `;
 
 
@@ -214,8 +219,6 @@ const InfoBtns = styled.div`
 
 const PortfolioSection = styled.div`
   transition: 0.3s ease;
-  /* width: 100%; */
-  /* height: 1000px; */
   padding: 80px 150px 148px 150px;
   background-color: var(--main-color);
   border-radius: 80px 80px 0 0;
@@ -227,41 +230,46 @@ const PortfolioSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 
   &:first-child {
     margin-top: 0;
   }
 
-  &:nth-of-type(even) {
-    background-color: var(--background-color);
-
-    ${Top} {
-      border-color: var(--main-color);
-    }
-
-    ${Top} h2,
-    ${Right},
-    ${Right} h3 {
-      color: var(--main-color);
-    }
-
-    ${Left} {
-      background-color: var(--main-color);
-    }
-
-    ${InfoTitle}{
-      border-color: var(--main-color);
-    }
-    ${InfoBtns}{
-       button{
-        background-color: var(--main-color);
-        color: var(--background-color);
-       }
-       button:hover{
-        outline: 4px solid var(--main-color);
+  &.odd{
         background-color: var(--background-color);
-        color: var(--main-color);
-      }
-    }
+    
+        ${Top} {
+          border-color: var(--main-color);
+        }
+    
+        ${Top} h2,
+        ${Right},
+        ${Right} h3 {
+          color: var(--main-color);
+        }
+    
+        ${Left} {
+          background-color: var(--main-color);
+        }
+    
+        ${InfoTitle}{
+          border-color: var(--main-color);
+        }
+        ${InfoBtns}{
+           button{
+            background-color: var(--main-color);
+            color: var(--background-color);
+           }
+           button:hover{
+            outline: 4px solid var(--main-color);
+            background-color: var(--background-color);
+            color: var(--main-color);
+          }
+        }
   }
+`;
+
+const StyledElement = styled.div`
+  position: relative;
 `;

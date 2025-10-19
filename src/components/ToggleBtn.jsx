@@ -27,7 +27,7 @@ export default function ToggleBtn() {
         {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
       </ToggleButton>
 
-      <TopButton onClick={scrollToTop} aria-label="Scroll to top">
+      <TopButton onClick={scrollToTop}>
         <FaArrowUp size={16} />
       </TopButton>
     </Buttons>
