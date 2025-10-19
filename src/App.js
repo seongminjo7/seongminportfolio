@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import GlobalStyle from './styles/GlobalStyle';  // GlobalStyle import
 import styled from 'styled-components';
 import ToggleBtn from './components/ToggleBtn';

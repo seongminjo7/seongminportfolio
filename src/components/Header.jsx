@@ -4,7 +4,6 @@ import { IoClose } from "react-icons/io5";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { projectSections } from "../data/projectSections";
-import { section, tr } from "framer-motion/client";
 import kakaoIcon from "../img/header/kakao.svg";
 import emailIcon from "../img/header/mail.svg";
 import { Link } from "react-scroll";
