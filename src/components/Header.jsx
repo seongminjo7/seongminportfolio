@@ -91,21 +91,21 @@ export default function Header() {
                         <Link to="about" smooth={true} duration={500}>
                             <li className="about"><h2>About Me</h2></li>
                         </Link>
-                        <Link to="project" smooth={true} duration={500}>
-                            <li className="project">
+                        <li className="project">
+                            <Link to="project" smooth={true} duration={500}>
                                 <h2>Project</h2>
-                                <ProjectListWrapper>
-                                    {projectSections.map((section) => (
-                                        <ProjectLists key={section.id}>
-                                            <div className="textBox">
-                                                <h3>{section.navTitle}</h3>
-                                                <span>{section.subTitle}</span>
-                                            </div>
-                                        </ProjectLists>
-                                    ))}
-                                </ProjectListWrapper>
-                            </li>
-                        </Link>
+                            </Link>
+                            <ProjectListWrapper>
+                                {projectSections.map((section) => (
+                                    <ProjectLists key={section.id}>
+                                        <div className="textBox">
+                                            <h3>{section.navTitle}</h3>
+                                            <span>{section.subTitle}</span>
+                                        </div>
+                                    </ProjectLists>
+                                ))}
+                            </ProjectListWrapper>
+                        </li>
                         <li className="design"><h2>Design</h2></li>
                         <SnsLink>
                             <Sns><img src={kakaoIcon} alt="카카오톡 아이콘" /></Sns>
