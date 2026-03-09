@@ -117,9 +117,9 @@ const Left = styled.div`
       transition: transform 0.4s;
     }
 
-      &:hover img{
+    &:hover img{
       transform: scale(1.15);
-      }
+    }
 `;
 
 const Right = styled.div`

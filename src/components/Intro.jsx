@@ -49,7 +49,6 @@ export default function Intro() {
                         <li>Versatile</li>
                         <li>Adaptive</li>
                         <li>Creative</li>
-
                         <li>Innovative</li>
                     </ul>
                 </SubRotate>

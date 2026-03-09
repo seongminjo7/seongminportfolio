@@ -26,7 +26,7 @@ export const projectSections = [
         responsive: true,
         contribution: "Contribution : 100%",
         stack: ["React", "Styled-Components", "Firebase"],
-        moreDescription: "실제 Zara 사이트를 클론하며 반응형 웹 구조 설계, 상품 리스트 필터 기능 등을 직접 구현했습니다.",
+        moreDescription: "스쿠데리아 페라리의 팬사이트입니다.",
         siteUrl: "https://seongminjo7.github.io/ferrari2026/",
         navTitle:"Scuderia Ferrari",
     },
