@@ -12,56 +12,56 @@ export default function Portfolio() {
 
   return (
 
-    <Element name="project" className="test" style={{position:'sticky', top:0}}>
+    <Element name="project" className="test" >
       <ProjectWrapper >
         {projectSections.map((section, index) => (
-          <Element key={section.id} name={section.id}>
-            <StyledElement >
-              <PortfolioSection key={section.id} className={`portfolio ${section.id} ${index % 2 === 0 ? 'even' : 'odd'}`}>
-                <Top>
-                  <h2>{`#${String(index + 1).padStart(2, "0")}`}</h2>
-                </Top>
+          <PortfolioSection
+            key={section.id}
+            id={section.id}
+            className={`portfolio ${section.id} ${index % 2 === 0 ? 'even' : 'odd'}`}
+          >
+            <Top>
+              <h2>{`#${String(index + 1).padStart(2, "0")}`}</h2>
+            </Top>
 
-                <Bottom>
-                  <Left>
-                    <img src={section.image} alt={section.title} />
-                  </Left>
+            <Bottom>
+              <Left>
+                <img src={section.image} alt={section.title} />
+              </Left>
 
-                  <Right>
-                    <ProjectInfo>
-                      <InfoTop>
-                        <InfoSub>
-                          <InfoTitle>
-                            <h3>{section.title}</h3>
-                            <span>{section.subTitle}</span>
-                          </InfoTitle>
-                          <InfoP>
-                            <p className="responsive">
-                              {section.responsive ? "Responsive Web" : "Static Web"}
-                            </p>
-                            <span>/</span>
-                            <p>{section.contribution}</p>
-                          </InfoP>
-                        </InfoSub>
-                        <StackList>
-                          <p>{section.stack}</p>
-                        </StackList>
-                        <p>{section.description}</p>
-                      </InfoTop>
-                      <InfoBottom>
-                        <InfoBtns key={index}>
-                          <button>view more <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
-                        </InfoBtns>
-                        <InfoBtns key={index}>
-                          <button onClick={() => handleClick(section.siteUrl)}>go site <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
-                        </InfoBtns>
-                      </InfoBottom>
-                    </ProjectInfo>
-                  </Right>
-                </Bottom>
-              </PortfolioSection>
-            </StyledElement>
-          </Element>
+              <Right>
+                <ProjectInfo>
+                  <InfoTop>
+                    <InfoSub>
+                      <InfoTitle>
+                        <h3>{section.title}</h3>
+                        <span>{section.subTitle}</span>
+                      </InfoTitle>
+                      <InfoP>
+                        <p className="responsive">
+                          {section.responsive ? "Responsive Web" : "Static Web"}
+                        </p>
+                        <span>/</span>
+                        <p>{section.contribution}</p>
+                      </InfoP>
+                    </InfoSub>
+                    <StackList>
+                      <p>{section.stack}</p>
+                    </StackList>
+                    <p>{section.description}</p>
+                  </InfoTop>
+                  <InfoBottom>
+                    <InfoBtns>
+                      <button>view more <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
+                    </InfoBtns>
+                    <InfoBtns>
+                      <button onClick={() => handleClick(section.siteUrl)}>go site <GoArrowUpRight size={24} strokeWidth={1.1} /></button>
+                    </InfoBtns>
+                  </InfoBottom>
+                </ProjectInfo>
+              </Right>
+            </Bottom>
+          </PortfolioSection>
         ))}
       </ProjectWrapper>
     </Element >
@@ -76,9 +76,8 @@ const ProjectWrapper = styled.div`
   background-color: var(--background-color);
   transition: 0.3s ease;     
   top: 0;
+  box-sizing: border-box;
 `;
-
-
 
 const Top = styled.div`
   border-bottom: 5px solid var(--background-color);
@@ -101,11 +100,25 @@ const Bottom = styled.div`
 `;
 
 const Left = styled.div`
-  width: 712px;
-  height: 453px;
+  width: 100%;
+  max-width: 712px;
+  aspect-ratio: 16 / 9;
+  /* 크기 조금 더 크게 */
   padding: 20px;
   background-color: var(--background-color);
   border-radius: 13px;
+  overflow: hidden;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    &:hover img{
+      transform: scale(1.15);
+    }
 `;
 
 const Right = styled.div`
@@ -176,7 +189,6 @@ const StackList = styled.div`
 
   p {
     font-size: 24px;
-    padding: 0 10px 0;
   }
 `;
 
@@ -218,19 +230,23 @@ const InfoBtns = styled.div`
 `
 
 const PortfolioSection = styled.div`
-  transition: 0.3s ease;
-  padding: 80px 150px 148px 150px;
-  background-color: var(--main-color);
-  border-radius: 80px 80px 0 0;
-  box-shadow: 0 -12px 15.6px -10px rgba(0, 0, 0, 0.12);
   position: sticky;
   top: 0;
-  z-index: 1;
-  margin-top: -80px;
+
+  min-height: 100vh;
+  width: 100%;
+max-width: 100vw;
+
+  padding: 80px 150px 148px;
+  box-sizing: border-box;
+
+  background-color: var(--main-color);
+  border-radius: 80px 80px 0 0;
+  box-shadow: 0 -12px 15.6px -10px rgba(0,0,0,0.12);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
 
   &:first-child {
     margin-top: 0;
@@ -268,8 +284,4 @@ const PortfolioSection = styled.div`
           }
         }
   }
-`;
-
-const StyledElement = styled.div`
-  position: relative;
 `;

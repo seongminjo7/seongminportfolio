@@ -90,27 +90,34 @@ export default function Header() {
                         aria-hidden={!menuOpen}
                         style={{ overflow: 'hidden' }}
                     >
-                        <Link to="about" smooth={true} duration={800} onClick={() => setMenuOpen(false)}>
-                            <li className="about"><h2>About Me</h2></li>
-                        </Link>
+                        <li className="about">
+                            <Link to="about" smooth={true} duration={800} onClick={toggleMenu}>
+                                <h2>About Me</h2>
+                            </Link>
+                        </li>
                         <li className="project">
                             <Link to="project" smooth={true} duration={800} onClick={() => setMenuOpen(false)}>
                                 <h2>Project</h2>
                             </Link>
-                            <ProjectListWrapper>
+                            {/* <ProjectListWrapper>
                                 {projectSections.map((section) => (
-                                    <Link to={section.id} smooth={true} duration={800} /* onClick={() => setMenuOpen(false)} */>
-                                        <ProjectLists key={section.id}>
+                                    <ProjectLists key={section.id}>
+                                        <Link
+                                        to={section.id}
+                                        smooth={true}
+                                        duration={800}
+                                        onClick={toggleMenu}
+                                        >
                                             <div className="textBox">
                                                 <h3>{section.navTitle}</h3>
                                                 <span>{section.subTitle}</span>
                                             </div>
-                                        </ProjectLists>
-                                    </Link>
+                                        </Link>
+                                    </ProjectLists>
                                 ))}
-                            </ProjectListWrapper>
+                            </ProjectListWrapper> */}
                         </li>
-                        <Link to="design" smooth={true} duration={800} onClick={() => setMenuOpen(false)}>
+                        <Link to="design" smooth={true} duration={800} onClick={toggleMenu}>
                             <li className="design"><h2>Design</h2></li>
                         </Link>
                         <SnsLink>
