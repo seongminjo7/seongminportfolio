@@ -26,6 +26,7 @@ export default function Intro() {
                 ease: "power2.out"
             })
                 .to({}, { duration: 0.8 });
+                // 속도 조절
 
         }
 

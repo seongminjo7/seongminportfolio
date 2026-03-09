@@ -79,8 +79,6 @@ const ProjectWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-
-
 const Top = styled.div`
   border-bottom: 5px solid var(--background-color);
 
@@ -105,6 +103,7 @@ const Left = styled.div`
   width: 100%;
   max-width: 712px;
   aspect-ratio: 16 / 9;
+  /* 크기 조금 더 크게 */
   padding: 20px;
   background-color: var(--background-color);
   border-radius: 13px;
